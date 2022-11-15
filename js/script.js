@@ -36,6 +36,11 @@ new Vue({
         },
         deleteTodo(index) {
             this.arrTodo.splice(index, 1);
+        },
+        checkDone(done){
+            done = !done
+            console.log(done);
+            return done
         }
     }
 });
