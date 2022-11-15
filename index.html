@@ -5,11 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue Todolist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13/dist/vue.js" defer></script>
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    
+    <div id="root" class="container">
+        <div class="create-todo">
+            <input @keyup.enter="createTodo" type="text" placeholder="Aggiungi Todo" v-model="newTodo">
+            <button @click="createTodo">Aggiungi</button>
+        </div>
+
+        <div class="todo-container">
+            <h2 v-if="arrTodo.lenght === 0">Non ci sono todo</h2>
+            <ul v-else>
+                <li v-for="(todo, i) in arrTodo" class="todo" :class="arrTodo[i].done === true ? 'barred' : ''">
+                    {{ todo.text }}
+                    <i class="fas fa-times" @click="deleteTodo(i)"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
