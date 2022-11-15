@@ -20,8 +20,8 @@
         <div class="todo-container">
             <h2 v-if="arrTodo.lenght === 0">Non ci sono todo</h2>
             <ul class="todo-list" v-else>
-                <li v-for="(todo, i) in arrTodo" class="todo" >
-                    <span :class= "todo.done ? 'barred' : ''" @click="checkDone(todo.done)">
+                <li v-for="(todo, i) in arrTodo" class="todo" @click="checkDone(i)">
+                    <span :class= "todo.done ? 'barred' : ''">
                         {{ todo.text }}
                     </span>
                     <i class="fas fa-times" @click="deleteTodo(i)"></i>
